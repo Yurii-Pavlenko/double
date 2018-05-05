@@ -1,0 +1,64 @@
+.btn {
+  box-sizing: border-box;
+  display: block;
+  width: 80%;
+  min-height: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  color: @secondary-color;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: fade(@fifth-color, 75%);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn--link {
+  margin-bottom: 20px;
+}
+
+.btn--label {
+  position: relative;
+
+  &::before {
+    content: "Скрыть";
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 700;
+    color: @secondary-color;
+    background-color: fade(@fifth-color, 75%);
+    border-radius: 10px;
+    opacity: 0;
+  }
+}
+
+@media (min-width: @tablet-width) {
+  .btn {
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+  }
+
+  .btn:hover {
+    color: @fifth-color;
+    box-shadow: inset 0 0 0 32px @secondary-color;
+  }
+
+  .btn--label {
+    &::before {
+      transition-duration: 0.2s;
+    }
+
+    &:hover::before {
+      color: @fifth-color;
+      box-shadow: inset 0 0 0 32px @secondary-color;
+    }
+  }
+}

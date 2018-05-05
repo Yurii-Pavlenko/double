@@ -1,0 +1,241 @@
+.gallery-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.gallery-item__name {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 28px;
+  line-height: 45px;
+  font-weight: 700;
+  color: @secondary-color;
+  text-align: center;
+  background-image: linear-gradient(180deg, fade(@forth-color, 65%), @primary-color);
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.gallery-item__wrapper {
+  min-height: 150px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: fade(@primary-color, 90%);
+  font-size: 0;
+}
+
+.gallery-item__check {
+  display: none;
+}
+
+.gallery-item__check:checked {
+  & ~ .gallery-item__info {
+    display: block;
+  }
+
+  & ~ .gallery-item__bottom {
+    border-radius: 0;
+
+    & .gallery-item__btn {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.gallery-item__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 192px;
+  background-image: linear-gradient(180deg, @primary-color, fade(@primary-color, 30%));
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.gallery-item__info {
+  box-sizing: border-box;
+  display: none;
+  padding: 30px;
+  line-height: 26px;
+  text-align: justify;
+  background-image: linear-gradient(180deg, fade(@primary-color, 30%), fade(@primary-color, 0.4));
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.gallery-item__hashtag-list {
+  .reset-list();
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.gallery-item__hashtag-item {
+  flex-grow: 1;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 5px;
+  font-size: 16px;
+  line-height: 16px;
+  color: @secondary-color;
+  text-align: center;
+  background-color: @forth-color;
+  border-radius: 7px;
+}
+
+.gallery-item__description {
+  margin-bottom: 0;
+}
+
+@media (min-width: @tablet-width) {
+  .gallery-item {
+    width: 47.5%;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .gallery-item__name {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 32px;
+    line-height: 45px;
+    font-weight: 700;
+  }
+
+  .gallery-item__info {
+    position: relative;
+    top: 30px;
+    width: 210.65%;
+    margin-bottom: 20px;
+    border-top-right-radius: 10px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 47.5%;
+      height: 30px;
+      background-color: fade(@primary-color, 30%);
+    }
+  }
+
+  .gallery-item:nth-of-type(2n) {
+    margin-right: 0;
+
+    & .gallery-item__info {
+      left: -110.65%;
+      right: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 10px;
+
+      &::before {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+}
+
+@media (min-width: @desktop-width) {
+  .gallery-item {
+    position: relative;
+    width: 30%;
+    margin-right: 5%;
+    border-width: 2px;
+  }
+
+  .gallery-item:nth-of-type(2n) {
+    margin-right: 5%;
+  }
+
+  .gallery-item:nth-of-type(3n) {
+    margin-right: 0;
+  }
+
+  .gallery-item__wrapper {
+    min-height: 452px;
+    overflow: hidden;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .gallery-item__bottom {
+    position: absolute;
+    top: 349px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    padding-top: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition-duration: 0.3s;
+  }
+
+  .gallery-item:hover .gallery-item__bottom {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .gallery-item__info {
+    width: 216.7%;
+    left: 0;
+
+    &::before {
+      width: 46.1%;
+    }
+  }
+
+  .gallery-item:nth-of-type(3n + 1) {
+    & .gallery-item__info {
+      left: 0;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 0;
+
+      &::before {
+        left: 0;
+      }
+    }
+  }
+
+  .gallery-item:nth-of-type(3n + 2) {
+    & .gallery-item__info {
+      left: -58.3%;
+      right: auto;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+
+      &::before {
+        left: 26.9%;
+      }
+    }
+  }
+
+  .gallery-item:nth-of-type(3n + 3) {
+    & .gallery-item__info {
+      left: -116.7%;
+
+      border-top-right-radius: 0;
+      border-top-left-radius: 10px;
+
+      &::before {
+        right: 0;
+        left: auto;
+      }
+    }
+  }
+
+  .gallery-item__check:checked {
+    & ~ .gallery-item__wrapper {
+      border-radius: 0;
+    }
+  }
+}
